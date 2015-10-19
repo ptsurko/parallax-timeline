@@ -19,8 +19,9 @@
   Timeline.prototype.init_ = function() {
     console.log('timeline initialized');
 
-    this.animationRequestId_ = window.requestAnimationFrame(this.animateTimeline_.bind(this));
-  }
+    this.animationRequestId_ = window.requestAnimationFrame(
+        this.animateTimeline_.bind(this));
+  };
 
   Timeline.prototype.animateTimeline_ = function() {
     var timelineTop = this.element_.offset().top;
@@ -33,10 +34,13 @@
       var modifications = [];
       $('.timeline__anchor', this.element_).each(function() {
         var anchorEl = $(this);
-        var anchorTop = anchorEl.hasClass('timeline__anchor--first') ? 0 : anchorEl.position().top;
+        var anchorTop = anchorEl.hasClass('timeline__anchor--first') ?
+            0 : anchorEl.position().top;
         var anchorParentEl = anchorEl.parent();
+        var currentOffset = windowHeight + windowScrollTop -
+            (anchorParentEl.offset().top + anchorTop);
 
-        if (windowHeight + windowScrollTop - (anchorParentEl.offset().top + anchorTop) > offsetBottom) {
+        if (currentOffset > offsetBottom) {
           if (!anchorEl.hasClass('timeline__anchor--done')) {
             modifications.push(function() {
               anchorEl.addClass('timeline__anchor--done');
@@ -57,13 +61,14 @@
       });
     }
 
-    this.animationRequestId_ = window.requestAnimationFrame(this.animateTimeline_.bind(this));
-  }
+    this.animationRequestId_ = window.requestAnimationFrame(
+        this.animateTimeline_.bind(this));
+  };
 
   Timeline.prototype.destroy = function() {
     window.cancelAnimationFrame(this.animationRequestId_);
     this.element_ = null;
-  }
+  };
 
   /**
    *
