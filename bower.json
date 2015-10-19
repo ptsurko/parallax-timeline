@@ -1,0 +1,21 @@
+{
+  "name": "parallax-timeline",
+  "version": "0.0.1",
+  "authors": [
+    "ptsurko <pavel.tsurko@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "skrollr": "~0.6.30",
+    "jquery": "~2.1.4",
+    "requestAnimationFrame-polyfill": "*"
+  }
+}

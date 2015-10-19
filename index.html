@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Parallax</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/timeline.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">&lt;Parallax Inc.&gt;</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Parallax</a></li>
+          <li><a href="#">Scrollr</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="content-background">
+    </div>
+    <div data-timeline class="timeline" data-offset-bottom="100px">
+      <div class="timeline__progress">
+        <div class="timeline__progress-done"></div>
+      </div>
+      <div class="timeline__row timeline__row--size-large">
+        <div class="timeline__anchor timeline__anchor--big timeline__anchor--top timeline__anchor--first">1</div>
+      </div>
+      <div class="timeline__row">
+        <div class="timeline__anchor"></div>
+        <div class="timeline__item timeline__item--align-left timeline__item--animate-bounce-in">
+          <h1>Parallax</h1>
+          <p>
+            The parallax effect has been around for years in classic video games, but it became a trend in the web design world. This cool effect is now commonly seen as part of the scrolling feature of a web page. It uses multiple backgrounds which seem to move at different speeds to create a sensation of depth (creating a faux-3D effect) and an interesting browsing experience. The term is derived from the Greek "parallaxis", meaning "alteration".
+          </p>
+        </div>
+      </div>
+      <div class="timeline__row">
+        <div class="timeline__anchor"></div>
+        <div class="timeline__item timeline__item--align-right timeline__item--animate-bounce-in">
+          <h1>Parallax Scrolling</h1>
+          <p>
+            Parallax scrolling is a technique in computer graphics and web design, where background images move by the camera slower than foreground images, creating an illusion of depth in a 2D scene and adding to the immersion.[1] The technique grew out of the multiplane camera technique used in traditional animation[2] since the 1930s. Parallax scrolling was popularized in 2D computer graphics and video games by the arcade games Moon Patrol[3][4] and Jungle Hunt,[5] both released in 1982. Some parallax scrolling had earlier been used by the 1981 arcade game Jump Bug.[6]
+          </p>
+        </div>
+      </div>
+      <div class="timeline__row">
+        <div class="timeline__anchor timeline__anchor--big">2</div>
+        <div class="timeline__item timeline__item--align-left timeline__item--animate-bounce-in">
+          <h1>Layer Method</h1>
+          <p>
+            Some display systems support multiple background layers that can be scrolled independently in horizontal and vertical directions and composited on one another, simulating a multiplane camera. On such a display system, a game can produce parallax by simply changing each layer's position by a different amount in the same direction. Layers that move more quickly are perceived to be closer to the virtual camera. Layers can be placed in front of the playfield—the layer containing the objects with which the player interacts—for various reasons such as to provide increased dimension, obscure some of the action of the game, or distract the player.
+          </p>
+        </div>
+      </div>
+      <div class="timeline__row">
+        <div class="timeline__anchor"></div>
+        <div class="timeline__item timeline__item--align-right timeline__item--animate-bounce-in">
+          <img src="images/layer_method.jpg" style="max-width:100%">
+        </div>
+      </div>
+      <div class="timeline__row">
+        <div class="timeline__anchor timeline__anchor--big">3</div>
+        <div class="timeline__item timeline__item--align-left timeline__item--animate-bounce-in">
+          <h1>Sprite Method</h1>
+          <p>
+            Programmers may also make pseudo-layers of sprites—individually controllable moving objects drawn by hardware on top of or behind the layers—if they are available on the display system. For instance Star Force, an overhead-view vertically scrolling shooter for NES, used this for its starfield, and Final Fight for the Super NES used this technique for the layer immediately in front of the main playfield.
+          </p>
+        </div>
+      </div>
+      <div class="timeline__row">
+        <div class="timeline__anchor"></div>
+        <div class="timeline__item timeline__item--align-right timeline__item--animate-bounce-in">
+          <img src="images/sprite_method.jpg" style="max-width:100%">
+        </div>
+      </div>
+      <div class="timeline__row timeline__row--last">
+        <div class="timeline__anchor timeline__anchor--big timeline__anchor--last">4</div>
+      </div>
+    </div>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/requestAnimationFrame-polyfill/requestAnimationFrame.js"></script>
+    <script src="js/timeline.js"></script>
+    <script type="text/javascript">
+      $('.timeline').timeline();
+    </script>
+  </body>
+</html>
