@@ -1,0 +1,22 @@
+{
+  "name": "parallax-timeline",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ptsurko/parallax-timeline.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ptsurko/parallax-timeline/issues"
+  },
+  "homepage": "https://github.com/ptsurko/parallax-timeline#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-connect": "^2.2.0"
+  }
+}

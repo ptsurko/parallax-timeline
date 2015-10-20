@@ -17,8 +17,6 @@
   }
 
   Timeline.prototype.init_ = function() {
-    console.log('timeline initialized');
-
     this.animationRequestId_ = window.requestAnimationFrame(
         this.animateTimeline_.bind(this));
   };

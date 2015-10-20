@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+- 4.1
+env:
+  global:
+  - GH_REF: github.com/ptsurko/parallax-timeline.git
+  - GIT_NAME: Travis-CI
+  - GIT_EMAIL: travis@nodemeatspace.com
+  - secure: Pr4UISBNr4fahmfH7xpvCEFELf2mxH4CZ6DEB4W6Oh9tX1qGSJadqRXj12sKnU9bffv3XlhT/onSgXRhtKTeC6f4JLlMQ6e9oUO7YbDUabD5AcayqOT2rzpKo3MKsLePIFm4XjIjqOQlMXWWV167zk/TLD89ixy2131/+qgvlX57CJYY49us2U9l+0BjW6PFInxSdMlTh0vHiyt2YKKb7JtY7SZyP+tPLowfVeuKa4wZIWhh3Uoh0YrOhV6WQBxdE+iezpF2guzI8YeMXMU6swZ9iYOJGEs1lBH6WL/zopH/jdRmsIOkavVxGChLvrFfSStAZcNK/hXAo+2p6u4GbhVdFOWWa4OoY9rD2X7yulTbEE2Xr2OmVkQ8DOi0zqHNYXxui9a6IKAJceMGM3TkmAqRHo7qkuqlwl3vYBkx8TKT+4WtsZ0htblI7ZHDKDBss6oOkN/WDxuRqg7MB+vp3To6qQJmV8Wz+wEo+5b9rnTCrmIIfrdhpKrrprQaKa3IwcfRmUbwH/GQj1VOL2KgXU7EAdM35QCjg/Fx5PNI2qtuxuC8kjcwjpuflmRG+tPM4XlQKXDDGtAN3hVcDdMo0Pc/SuoQIsO23ET1x6YGlfa4y8Z7u+IaqA59uv2ongXtRhiBUO78vy5jejHl6+iRq5+9YIS3MAbVrqyw+7XJhwo=
+before_install:
+- chmod +x deploy_ghpages.sh
+before_script:
+- npm install -g bower
+- bower install
+after_success: ./deploy_ghpages.sh
+branches:
+  only:
+  - master
