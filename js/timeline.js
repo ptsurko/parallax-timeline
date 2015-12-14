@@ -1,13 +1,14 @@
 
 (function($) {
   'use strict';
-
+  //TODO: Review Bootstrap 4 JS code for styling and organization.
   var TIMELINE_DATA = 'timeline';
 
   function Timeline(element, options) {
       this.element_ = element;
+      this.progressDoneElement_ = this.element_.getElementsByClassName('timeline__progress-done')[0];
       // Expose defaults object to be public
-      this.options_ = $.extend({
+      this.options_ = extend({
         offsetBottom: 100
       }, options);
 
@@ -22,38 +23,40 @@
   };
 
   Timeline.prototype.animateTimeline_ = function() {
-    var timelineTop = this.element_.offset().top;
-    var windowHeight = $(window).height();
-    var windowScrollTop = $(window).scrollTop();
+    var timelineTop = this.element_.offsetTop;
+    var windowHeight = window.innerHeight;
+    var windowScrollTop = document.body.scrollTop || document.documentElement.scrollTop;
     var offsetBottom = this.options_.offsetBottom;
     var progress = windowHeight + windowScrollTop - timelineTop - offsetBottom;
 
     if (this.doneProgress_ != progress) {
       var modifications = [];
-      $('.timeline__anchor', this.element_).each(function() {
-        var anchorEl = $(this);
-        var anchorTop = anchorEl.hasClass('timeline__anchor--first') ?
-            0 : anchorEl.position().top;
-        var anchorParentEl = anchorEl.parent();
-        var currentOffset = windowHeight + windowScrollTop -
-            (anchorParentEl.offset().top + anchorTop);
 
-        if (currentOffset > offsetBottom) {
-          if (!anchorEl.hasClass('timeline__anchor--done')) {
+      var anchorElements = this.element_.querySelectorAll('.timeline__anchor');
+      Array.prototype.forEach.call(anchorElements, function(anchorEl){
+        var anchorParentEl = anchorEl.parentElement;
+        var anchorTop = hasClass(anchorEl, 'timeline__anchor--first') ?
+            0 : anchorEl.offsetTop - anchorEl.offsetHeight / 2;
+        var anchorOffset = windowHeight + windowScrollTop -
+            (offset(anchorParentEl).top + anchorTop);
+
+        if (anchorOffset > offsetBottom) {
+          if (!hasClass(anchorEl, 'timeline__anchor--done')) {
             modifications.push(function() {
-              anchorEl.addClass('timeline__anchor--done');
-              anchorParentEl.addClass('timeline__row--animate');
+              addClass(anchorEl, 'timeline__anchor--done');
+              addClass(anchorParentEl, 'timeline__row--animate');
             });
           }
-        } else if (anchorEl.hasClass('timeline__anchor--done')) {
+        } else if (hasClass(anchorEl, 'timeline__anchor--done')) {
           modifications.push(function() {
-            anchorEl.removeClass('timeline__anchor--done');
-            anchorParentEl.removeClass('timeline__row--animate');
+            removeClass(anchorEl, 'timeline__anchor--done');
+            removeClass(anchorParentEl, 'timeline__row--animate');
           });
         }
       });
+
       this.doneProgress_ = progress;
-      $('.timeline__progress-done', this.element_).height(progress);
+      this.progressDoneElement_.style.height = progress + 'px';
       modifications.forEach(function(modification) {
         modification();
       });
@@ -68,6 +71,54 @@
     this.element_ = null;
   };
 
+  function hasClass(element, className) {
+    if (element.classList) {
+      return element.classList.contains(className);
+    } else {
+      return new RegExp('(^| )' + className + '( |$)', 'gi').test(element.className);
+    }
+  }
+
+  function addClass(element, className) {
+    if (element.classList) {
+      element.classList.add(className);
+    } else {
+      element.className += ' ' + className;
+    }
+  }
+
+  function removeClass(element, className) {
+    if (element.classList) {
+      element.classList.remove(className);
+    } else {
+      element.className = element.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+    }
+  }
+
+  function offset(element) {
+    var rect = element.getBoundingClientRect();
+    return {
+      top: rect.top + (document.body.scrollTop || document.documentElement.scrollTop),
+      left: rect.left + (document.body.scrollLeft || document.documentElement.scrollLeft)
+    };
+  }
+
+  function extend(out) {
+    out = out || {};
+
+    for (var i = 1; i < arguments.length; i++) {
+      if (!arguments[i])
+        continue;
+
+      for (var key in arguments[i]) {
+        if (arguments[i].hasOwnProperty(key))
+          out[key] = arguments[i][key];
+      }
+    }
+
+    return out;
+  };
+
   /**
    *
    * @return {!jQuery} jQuery object.
@@ -77,7 +128,7 @@
       var data = $(this).data(TIMELINE_DATA);
 
       if (!data) {
-        data = new Timeline($(this), options);
+        data = new Timeline($(this)[0], options);
         $(this).data(TIMELINE_DATA, data);
       }
     });
