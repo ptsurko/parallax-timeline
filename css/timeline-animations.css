@@ -24,3 +24,12 @@
     transform: translateX(30px);
   }
 }
+
+.pt-timeline__item--animate-scale {
+  transition: transform 0.4s, opacity 0.4s;
+  transform: scale(0);
+}
+
+.pt-timeline__row--animate > .pt-timeline__item--animate-scale {
+  transform: scale(1);
+}

@@ -5,8 +5,7 @@ $bounce-in-offset: 30px;
   &.pt-timeline__item--align-left,
   &.pt-timeline__item--align-right {
     opacity: 0;
-    transition: transform $animation-duration, opacity $animation-duration;
-    visibility: collapse;
+    transition: all $animation-duration;
   }
 
   &.pt-timeline__item--align-right {
@@ -24,7 +23,6 @@ $bounce-in-offset: 30px;
     &.pt-timeline__item--align-right {
       transform: translateX(0);
       opacity: 1;
-      visibility: visible;
     }
   }
 }
@@ -33,5 +31,17 @@ $bounce-in-offset: 30px;
   .pt-timeline__item--animate-bounce-in.pt-timeline__item--align-left,
   .pt-timeline__item--animate-bounce-in.pt-timeline__item--align-right {
     transform: translateX($bounce-in-offset);
+  }
+}
+
+
+.pt-timeline__item--animate-scale {
+  transition: all $animation-duration;
+  transform: scale(0);
+}
+
+.pt-timeline__row--animate {
+  > .pt-timeline__item--animate-scale {
+    transform: scale(1);
   }
 }
