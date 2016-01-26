@@ -1,20 +1,28 @@
 
 (function($) {
   'use strict';
+
   //TODO: Review Bootstrap 4 JS code for styling and organization.
   var TIMELINE_DATA = 'timeline';
+  var Classes = {
+    PROGRESS_DONE: 'pt-timeline__progress-done',
+    ANCHOR: 'pt-timeline__anchor',
+    ANCHOR_VISITED: 'pt-timeline__anchor--visited',
+    ANCHOR_FIRST: 'pt-timeline__anchor--first',
+    ROW_ANIMATE: 'pt-timeline__row--animate'
+  };
 
   function Timeline(element, options) {
-      this.element_ = element;
-      this.progressDoneElement_ = this.element_.getElementsByClassName('timeline__progress-done')[0];
-      // Expose defaults object to be public
-      this.options_ = extend({
-        offsetBottom: 100
-      }, options);
+    this.element_ = element;
+    this.progressDoneElement_ = this.element_.getElementsByClassName(Classes.PROGRESS_DONE)[0];
+    // Expose defaults object to be public
+    this.options_ = extend({
+      offsetBottom: 100
+    }, options);
 
-      this.animationRequestId_ = null;
-      this.doneProgress_ = 0;
-      this.init_();
+    this.animationRequestId_ = null;
+    this.doneProgress_ = 0;
+    this.init_();
   }
 
   Timeline.prototype.init_ = function() {
@@ -32,25 +40,25 @@
     if (this.doneProgress_ != progress) {
       var modifications = [];
 
-      var anchorElements = this.element_.querySelectorAll('.timeline__anchor');
-      Array.prototype.forEach.call(anchorElements, function(anchorEl){
-        var anchorParentEl = anchorEl.parentElement;
-        var anchorTop = hasClass(anchorEl, 'timeline__anchor--first') ?
-            0 : anchorEl.offsetTop - anchorEl.offsetHeight / 2;
+      var anchorElements = this.element_.querySelectorAll('.' + Classes.ANCHOR);
+      Array.prototype.forEach.call(anchorElements, function(anchorElement){
+        var rowElement = anchorElement.parentElement;
+        var anchorTop = hasClass(anchorElement, Classes.ANCHOR_FIRST) ?
+            0 : anchorElement.offsetTop - anchorElement.offsetHeight / 2;
         var anchorOffset = windowHeight + windowScrollTop -
-            (offset(anchorParentEl).top + anchorTop);
+            (offset(rowElement).top + anchorTop);
 
         if (anchorOffset > offsetBottom) {
-          if (!hasClass(anchorEl, 'timeline__anchor--done')) {
+          if (!hasClass(anchorElement, Classes.ANCHOR_VISITED)) {
             modifications.push(function() {
-              addClass(anchorEl, 'timeline__anchor--done');
-              addClass(anchorParentEl, 'timeline__row--animate');
+              addClass(anchorElement, Classes.ANCHOR_VISITED);
+              addClass(rowElement, Classes.ROW_ANIMATE);
             });
           }
-        } else if (hasClass(anchorEl, 'timeline__anchor--done')) {
+        } else if (hasClass(anchorElement, Classes.ANCHOR_VISITED)) {
           modifications.push(function() {
-            removeClass(anchorEl, 'timeline__anchor--done');
-            removeClass(anchorParentEl, 'timeline__row--animate');
+            removeClass(anchorElement, Classes.ANCHOR_VISITED);
+            removeClass(rowElement, Classes.ROW_ANIMATE);
           });
         }
       });
@@ -105,7 +113,6 @@
 
   function extend(out) {
     out = out || {};
-
     for (var i = 1; i < arguments.length; i++) {
       if (!arguments[i])
         continue;
@@ -115,7 +122,6 @@
           out[key] = arguments[i][key];
       }
     }
-
     return out;
   };
 
