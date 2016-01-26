@@ -1,0 +1,33 @@
+
+.content-background {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url(./../images/bcg.jpg);
+  background-size: cover;
+}
+
+.parallax-container {
+  background: white;
+  padding-top: 30px;
+  top: calc(100% - 100px);
+  position: absolute;
+}
+
+.image-scale {
+  -webkit-transform-origin: 0 50%;
+  transform-origin: 0 50%;
+}
+
+.image-rotate {
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+}
+
+.parallax-anchor {
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+}
