@@ -1,20 +1,28 @@
+$offset-bottom: 100px;
+$progress-width: 4px;
+$row-height: 100px;
+$anchor-width: 24px;
+$anchor-width-large: 92px;
+$item-padding: 15px;
+$item-padding-progress: 50px;
+
 .pt-timeline {
   background: white;
-  top: calc(100% - 100px);
+  top: calc(100% - #{$offset-bottom});
   position: absolute;
-  padding-bottom: 100px;
+  padding-bottom: $offset-bottom;
 }
 
 /* Timeline Progress bar */
 .pt-timeline__progress {
   position: absolute;
-  width: 4px;
+  width: $progress-width;
   background: #c4ced5;
   top: 0;
   bottom: 0;
   left: 50%;
   transform: translate(-50%, 0);
-  margin-bottom: 100px;
+  margin-bottom: $offset-bottom;
 }
 
 .pt-timeline__progress-done {
@@ -23,10 +31,10 @@
 
 /* Timeline Anchor */
 .pt-timeline__anchor {
-  width: 24px;
-  height: 24px;
+  width: $anchor-width;
+  height: $anchor-width;
   border: 3px solid #c4ced5;
-  border-radius: 15px;
+  border-radius: $anchor-width / 2;
   text-align: center;
   color: #c4ced5;
   background-color: #fff;
@@ -45,7 +53,7 @@
 }
 
 .pt-timeline__anchor--last {
-  top: 45px !important;
+  top: ($anchor-width-large / 2 - 1) !important;
 }
 
 .pt-timeline__anchor--visited {
@@ -55,10 +63,10 @@
 }
 
 .pt-timeline__anchor--big {
-  width: 92px;
-  height: 92px;
-  border-radius: 46px;
-  font: 500 40px/92px "MuseoSans", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+  width: $anchor-width-large;
+  height: $anchor-width-large;
+  border-radius: $anchor-width-large / 2;
+  font: 500 40px/#{$anchor-width-large} "MuseoSans", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
   top: 96px;
 }
 
@@ -66,7 +74,7 @@
 .pt-timeline__row {
   padding: 0 35px;
   position: relative;
-  min-height: 100px;
+  min-height: $row-height;
 }
 
 .pt-timeline__row::after {
@@ -76,7 +84,7 @@
 }
 
 .pt-timeline__row--size-large {
-  height: 100px;
+  height: $row-height;
 }
 
 .pt-timeline__row--last {
@@ -87,25 +95,27 @@
 .pt-timeline__item {
   float: left;
   width: 50%;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: $item-padding;
+  padding-left: $item-padding;
 }
 .pt-timeline__item--align-left {
-  padding-right: 50px;
+  padding-right: $item-padding-progress;
 }
 
 .pt-timeline__item--align-right {
   float: right;
-  padding-left: 50px;
+  padding-left: $item-padding-progress;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 768px) {
+  $offset-right: 70px;
+
   .pt-timeline {
-    padding-left: 70px;
+    padding-left: $offset-right;
   }
 
   .pt-timeline__row--size-large {
-    height: 100px;
+    height: $row-height;
   }
 
   .pt-timeline__item {
@@ -114,7 +124,7 @@
   }
 
   .pt-timeline__progress {
-    left: 70px;
+    left: $offset-right;
   }
 
   .pt-timeline__anchor {
@@ -123,7 +133,7 @@
 
   .pt-timeline__item--align-left,
   .pt-timeline__item--align-right {
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: $item-padding;
+    padding-left: $item-padding;
   }
 }

@@ -29,7 +29,7 @@ $bounce-in-offset: 30px;
   }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 768px) {
   .pt-timeline__item--animate-bounce-in.pt-timeline__item--align-left,
   .pt-timeline__item--animate-bounce-in.pt-timeline__item--align-right {
     transform: translateX($bounce-in-offset);
