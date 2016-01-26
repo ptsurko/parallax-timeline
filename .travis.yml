@@ -11,7 +11,9 @@ before_install:
 - chmod +x deploy_ghpages.sh
 before_script:
 - npm install -g bower
+- npm install -g gulp
 - bower install
+- gulp build
 after_success: ./deploy_ghpages.sh
 branches:
   only:

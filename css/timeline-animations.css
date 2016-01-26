@@ -1,20 +1,18 @@
-.pt-timeline__item--animate-bounce-in.pt-timeline__item--align-left,
-.pt-timeline__item--animate-bounce-in.pt-timeline__item--align-right {
+.pt-timeline__item--animate-bounce-in.pt-timeline__item--align-left, .pt-timeline__item--animate-bounce-in.pt-timeline__item--align-right {
   opacity: 0;
-  transition: transform .4s, opacity .4s;
+  transition: transform 0.4s, opacity 0.4s;
+  visibility: collapse;
 }
 
 .pt-timeline__item--animate-bounce-in.pt-timeline__item--align-right {
   transform: translateX(30px);
-  visibility: collapse;
 }
 
 .pt-timeline__item--animate-bounce-in.pt-timeline__item--align-left {
   transform: translateX(-30px);
 }
 
-.pt-timeline__row--animate > .pt-timeline__item--animate-bounce-in.pt-timeline__item--align-right,
-.pt-timeline__row--animate > .pt-timeline__item--animate-bounce-in.pt-timeline__item--align-left {
+.pt-timeline__row--animate > .pt-timeline__item--animate-bounce-in.pt-timeline__item--align-left, .pt-timeline__row--animate > .pt-timeline__item--animate-bounce-in.pt-timeline__item--align-right {
   transform: translateX(0);
   opacity: 1;
   visibility: visible;

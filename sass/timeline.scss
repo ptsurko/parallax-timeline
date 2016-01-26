@@ -41,6 +41,9 @@
   top: 0 !important;
 }
 
+.pt-timeline__anchor--first {
+}
+
 .pt-timeline__anchor--last {
   top: 45px !important;
 }
@@ -87,7 +90,6 @@
   padding-right: 15px;
   padding-left: 15px;
 }
-
 .pt-timeline__item--align-left {
   padding-right: 50px;
 }
@@ -101,19 +103,24 @@
   .pt-timeline {
     padding-left: 70px;
   }
+
   .pt-timeline__row--size-large {
     height: 100px;
   }
+
   .pt-timeline__item {
     width: 100%;
     float: left;
   }
+
   .pt-timeline__progress {
     left: 70px;
   }
+
   .pt-timeline__anchor {
     left: 0;
   }
+
   .pt-timeline__item--align-left,
   .pt-timeline__item--align-right {
     padding-right: 15px;
