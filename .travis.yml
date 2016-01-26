@@ -13,8 +13,8 @@ before_script:
 - npm install -g bower
 - npm install -g gulp
 - bower install
-- gulp build
-after_success: ./deploy_ghpages.sh
+- gulp build-gh-pages
+script: bash ./deploy_ghpages.sh
 branches:
   only:
   - master

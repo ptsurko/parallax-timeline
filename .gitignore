@@ -1,4 +1,7 @@
 .DS_Store
 
+/css
 node_modules
 bower_components
+
+out

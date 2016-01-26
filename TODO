@@ -5,9 +5,9 @@
   - chess layouts
   - grid layout + offset
   - etc...
-3) SASS
+3) [DONE] SASS
 4) TypeScript
-5) Move animations into separate css file
+5) [DONE] Move animations into separate css file
 6) Add more types of animation
 7) Scrollr integration
 8) [DONE] Fix issue with completing animation in Safari/FF/IE
